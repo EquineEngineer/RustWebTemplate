@@ -1,0 +1,30 @@
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+generator client {
+    provider = "cargo prisma"
+    output   = "../src/prisma.rs"
+}
+
+model Post {
+    id       String    @id @default(cuid())
+    name     String
+    content  String
+    comments Comment[]
+
+    created_at DateTime @default(now())
+    updated_at DateTime @updatedAt
+}
+
+model Comment {
+    id      String @id @default(cuid())
+    author  String
+    content String
+    post    Post   @relation(fields: [postId], references: [id])
+    postId  String
+
+    created_at DateTime @default(now())
+    updated_at DateTime @updatedAt
+}

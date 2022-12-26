@@ -1,0 +1,20 @@
+[package]
+name = "prisma-rust-silent-exit-reproduction"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[workspace]
+members = ["prisma-cli"]
+
+[dependencies]
+prisma-client-rust = { git = "https://github.com/Brendonovich/prisma-client-rust", version = "0.6.3", default-features = false, features = [
+    "postgresql", "rspc"
+] }
+tokio = { version = "1.21.2", features = ["full"] }
+serde = "1.0.145"
+tracing-subscriber = "0.3.15"
+graphul = "0.4.5"
+rspc = "0.1.2"
+dotenv = "0.15.0"
