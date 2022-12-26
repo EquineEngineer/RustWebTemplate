@@ -5,5 +5,4 @@ src/prisma.rs
 docker-compose.yml
 Dockerfile
 *.ts
-*/migrations/2022*
-*/migrations/2023*
+*/migrations/20*
